@@ -1,0 +1,1 @@
+export const searchableArray=["name.firstName", "email", "presentAddress"]
