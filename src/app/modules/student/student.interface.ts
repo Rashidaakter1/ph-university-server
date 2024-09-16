@@ -41,6 +41,7 @@ export type TStudent = {
   profileImg: string;
   isDeleted: boolean;
   academicDepartment: Types.ObjectId;
+  academicFaculty: Types.ObjectId;
 };
 
 //for creating static
@@ -60,3 +61,5 @@ export interface StudentModel extends Model<TStudent> {
 //   Record<string, never>,
 //   StudentMethods
 // >;
+
+

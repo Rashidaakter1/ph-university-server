@@ -6,7 +6,6 @@ export const createAdminValidationSchema = z.object({
     password: z.string().max(20),
     admin: z.object({
       name: userNameValidationSchema,
-      user: z.string(),
       gender: z.enum(["male", "female", "other"]),
       dateOfBirth: z.string().optional(),
       email: z.string().email(),
@@ -16,7 +15,6 @@ export const createAdminValidationSchema = z.object({
       presentAddress: z.string(),
       permanentAddress: z.string(),
       profileImg: z.string(),
- 
     }),
   }),
 });

@@ -25,7 +25,7 @@ export const sendImageToCloudinary = async (
       fetch_format: "auto",
       quality: "auto",
     });
-    console.log("Optimized URL:", optimizeUrl);
+    // console.log("Optimized URL:", optimizeUrl);
 
     // Transform the image: auto-crop to square aspect ratio
     const autoCropUrl = cloudinary.url(imageName, {
@@ -34,7 +34,7 @@ export const sendImageToCloudinary = async (
       width: 500,
       height: 500,
     });
-    console.log("Auto-cropped URL:", autoCropUrl);
+    // console.log("Auto-cropped URL:", autoCropUrl);
 
     return {
       uploadResult,

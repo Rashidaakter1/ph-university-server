@@ -9,8 +9,9 @@ const adminSchema = new Schema<TAdmin>({
   },
   user: {
     type: Schema.Types.ObjectId,
-    required: true,
-    ref: "user",
+    required: [true, "User id is required"],
+    unique: true,
+    ref: "User",
   },
   designation: {
     type: String,
