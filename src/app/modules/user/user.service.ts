@@ -211,9 +211,23 @@ const getMe = async (userId: string, role: string) => {
   }
   return result;
 };
+
+const changeStatus = async (id: string, payload: Partial<TUser>) => {
+  const result = await User.findByIdAndUpdate(
+    id,
+    {
+      payload,
+    },
+    {
+      new: true,
+    }
+  );
+  return result;
+};
 export const UserServices = {
   createStudentIntoDB,
   createFacultyIntoDB,
   createAdminIntoDb,
   getMe,
+  changeStatus,
 };

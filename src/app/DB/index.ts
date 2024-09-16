@@ -3,7 +3,7 @@ import { USER_ROLE } from "../modules/user/user.constant";
 import { User } from "../modules/user/user.model";
 
 const superAdmin = {
-  id: "A-0001",
+  id: "SA-0001",
   password: config.super__admin__password,
   email: "rashidaakterchadni@gmail.com",
   needsPasswordChange: false,
