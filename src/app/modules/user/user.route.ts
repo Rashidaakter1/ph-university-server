@@ -2,14 +2,13 @@ import express, { NextFunction, Request, Response } from "express";
 import { UserControllers } from "./user.controller";
 import validateRequest from "../../middlewares/validateRequest";
 
-
-import { createAdminValidationSchema } from "../admin/admin.valodation";
 import auth from "../../middlewares/auth";
 import { USER_ROLE } from "./user.constant";
 import { upload } from "../../utils/sendImageToCloudinary";
 import { UserValidation } from "./user.validation";
 import { createStudentValidationSchema } from "../student/student.validation";
 import { createFacultyValidationSchema } from "../faculty/faculty.validation";
+import { AdminValidations } from "../admin/admin.valodation";
 
 const router = express.Router();
 
@@ -45,7 +44,7 @@ router.post(
     next();
   },
   auth(USER_ROLE.superAdmin),
-  validateRequest(createAdminValidationSchema),
+  validateRequest(AdminValidations.createAdminValidationSchema),
   UserControllers.createAdmin
 );
 
