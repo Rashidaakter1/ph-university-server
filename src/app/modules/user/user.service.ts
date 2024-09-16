@@ -85,7 +85,7 @@ const createStudentIntoDB = async (
   }
 };
 const createFacultyIntoDB = async (password: string, facultyData: TFaculty) => {
-  console.log();
+ 
   // create a user object
   const userData: Partial<TUser> = {};
 

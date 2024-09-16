@@ -14,4 +14,5 @@ export default {
   jwt__refresh__token: process.env.JWT__REFRESH__TOKEN,
   jwt__refresh__expires__in: process.env.JWT__REFRESH__EXPIRERS__IN,
   reset__ui__link: process.env.RESET__UI__LINK,
+  super__admin__password: process.env.SUPER__ADMIN__PASSWORD,
 };
