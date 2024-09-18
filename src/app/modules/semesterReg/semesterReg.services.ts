@@ -4,6 +4,8 @@ import { AcademicSemester } from "../academicSemester/academicSemester.model";
 import { AcademicSemesterServices } from "../academicSemester/academicSemester.service";
 import { TSemesterRegistration } from "./semesterReg.interface";
 import { SemesterRegistration } from "./semesterReg.model";
+import mongoose from "mongoose";
+import { OfferedCourse } from "../offeredCourse/offeredCourse.model";
 
 const createSemesterRegistrationIntoDb = async (
   payload: TSemesterRegistration
@@ -68,7 +70,6 @@ const updateSemesterRegistrationIntoDb = async (
     throw new AppError(httpStatus.NOT_FOUND, "This semester is not found");
   }
 
-  //
   const currentSemesterStatus = isSemesterRegistrationExists.status;
   const requestedStatus = payload?.status;
 
@@ -124,12 +125,45 @@ const deleteSemesterRegistrationIntoDb = async (id: string) => {
     );
   }
 
-  
-  const registration = await SemesterRegistration.findByIdAndUpdate(id, {
-    new: true,
-    runValidators: true,
-  });
-  return registration;
+  const session = await mongoose.startSession();
+  try {
+    await session.startTransaction();
+    const deletedOfferedCourse = await OfferedCourse.deleteMany(
+      {
+        semesterRegistration: id,
+      },
+      {
+        session,
+      }
+    );
+
+    if (!deletedOfferedCourse) {
+      throw new AppError(
+        httpStatus.BAD_REQUEST,
+        "Failed to delete semester registration !"
+      );
+    }
+    const deletedSemisterRegistration =
+      await SemesterRegistration.findByIdAndDelete(id, {
+        session,
+        new: true,
+      });
+
+    if (!deletedSemisterRegistration) {
+      throw new AppError(
+        httpStatus.BAD_REQUEST,
+        "Failed to delete semester registration !"
+      );
+    }
+
+    await session.commitTransaction();
+    await session.endSession();
+    return null;
+  } catch (error: any) {
+    await session.abortTransaction();
+    await session.endSession();
+    throw new Error(error);
+  }
 };
 
 export const SemesterRegistrationService = {

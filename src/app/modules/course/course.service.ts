@@ -143,6 +143,12 @@ const assignFacultiesWithCourseIntoDB = async (
   console.log(result);
   return result;
 };
+const getFacultiesWithCourseFromDB = async (id: string) => {
+  const result = await CourseFaculty.findOne({ course: id }).populate(
+    "faculties"
+  );
+  return result;
+};
 
 const removeFacultiesFromCourseFromDB = async (
   id: string,
@@ -168,4 +174,5 @@ export const CourseServices = {
   deleteCourseFromDb,
   assignFacultiesWithCourseIntoDB,
   removeFacultiesFromCourseFromDB,
+  getFacultiesWithCourseFromDB,
 };

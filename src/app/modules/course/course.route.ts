@@ -33,6 +33,16 @@ router.delete(
 );
 
 router.get(
+  "/:courseId/get-faculties",
+  auth(
+    USER_ROLE.superAdmin,
+    USER_ROLE.admin,
+    USER_ROLE.faculty,
+    USER_ROLE.student
+  ),
+  CourseControllers.getFacultiesWithCourse
+);
+router.get(
   "/",
   auth(
     USER_ROLE.superAdmin,

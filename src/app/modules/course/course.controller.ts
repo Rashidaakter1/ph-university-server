@@ -74,7 +74,19 @@ const removeFacultiesFromCourse = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: " Academic faculty is deleted successfully",
+      message: "Faculty is deleted successfully",
+      data: result,
+    });
+  }
+);
+const getFacultiesWithCourse = catchAsync(
+  async (req: Request, res: Response) => {
+    const courseId = req.params.courseId;
+    const result = await CourseServices.getFacultiesWithCourseFromDB(courseId);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: " Faculties retrieved succesfully",
       data: result,
     });
   }
@@ -97,4 +109,5 @@ export const CourseControllers = {
   assignFacultiesWithCourse,
   removeFacultiesFromCourse,
   deleteCourse,
+  getFacultiesWithCourse,
 };
