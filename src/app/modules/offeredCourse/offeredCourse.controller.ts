@@ -6,7 +6,9 @@ import { OfferedCourseServices } from "./offeredCourse.service";
 
 const createOfferedCourse = catchAsync(async (req: Request, res: Response) => {
   console.log(req.body, "from controller");
-  const course = await OfferedCourseServices.createOfferedCourseIntoDb(req.body);
+  const course = await OfferedCourseServices.createOfferedCourseIntoDb(
+    req.body
+  );
 
   sendResponse(res, {
     success: true,
@@ -24,6 +26,19 @@ const getOfferedCourse = catchAsync(async (req: Request, res: Response) => {
     data: course,
   });
 });
+const getMyOfferedCourses = catchAsync(async (req: Request, res: Response) => {
+  const userId = req.user.userId;
+  const course = await OfferedCourseServices.getMyOfferedCoursesFromDB(
+    userId,
+    req.query
+  );
+  sendResponse(res, {
+    success: true,
+    statusCode: 200,
+    message: "Offered Courses retrieved successfully !'",
+    data: course,
+  });
+});
 const getSingleOfferedCourse = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -38,7 +53,10 @@ const getSingleOfferedCourse = catchAsync(
 );
 const updateOfferedCourse = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const course = await OfferedCourseServices.updateOfferedCourseIntoDb(id, req.body);
+  const course = await OfferedCourseServices.updateOfferedCourseIntoDb(
+    id,
+    req.body
+  );
   sendResponse(res, {
     success: true,
     statusCode: 200,
@@ -63,4 +81,5 @@ export const OfferedCourseControllers = {
   getSingleOfferedCourse,
   updateOfferedCourse,
   deleteOfferedCourse,
+  getMyOfferedCourses,
 };
