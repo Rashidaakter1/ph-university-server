@@ -4,6 +4,7 @@ import { TCourse, TCourseFaculty } from "./course.interface";
 import { Course, CourseFaculty } from "./course.model";
 import AppError from "../../errors/AppError";
 import httpStatus from "http-status";
+import { CourseSearchableFields } from "./course.constant";
 
 const createCourseIntoDb = async (payload: TCourse) => {
   const result = await Course.create(payload);
@@ -15,13 +16,17 @@ const getCourseFromDB = async (query: Record<string, unknown>) => {
     Course.find().populate("preRequisiteCourse.course"),
     query
   )
-    .search(["title"])
+    .search(CourseSearchableFields)
     .filter()
     .sort()
     .paginate()
     .fields();
   const result = await courseQuery.modelQuery;
-  return result;
+  const meta = await courseQuery.countTotal();
+  return {
+    meta,
+    result,
+  };
 };
 
 const getSingleCourseFromDB = async (id: string) => {

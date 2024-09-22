@@ -6,6 +6,7 @@ import { TSemesterRegistration } from "./semesterReg.interface";
 import { SemesterRegistration } from "./semesterReg.model";
 import mongoose from "mongoose";
 import { OfferedCourse } from "../offeredCourse/offeredCourse.model";
+import QueryBuilder from "../../builder/QueryBuilder";
 
 const createSemesterRegistrationIntoDb = async (
   payload: TSemesterRegistration
@@ -53,8 +54,21 @@ const createSemesterRegistrationIntoDb = async (
 const getSemesterRegistrationFromDb = async (
   query: Record<string, unknown>
 ) => {
-  const registration = await SemesterRegistration.find();
-  return registration;
+  const semesterRegistrationQuery = new QueryBuilder(
+    SemesterRegistration.find().populate("academicSemester"),
+    query
+  )
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const result = await semesterRegistrationQuery.modelQuery;
+  const meta = await semesterRegistrationQuery.countTotal();
+  return {
+    result,
+    meta,
+  };
 };
 const getSingleSemesterRegistrationFromDb = async (id: string) => {
   const registration = await SemesterRegistration.findById(id);

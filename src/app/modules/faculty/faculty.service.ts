@@ -4,19 +4,24 @@ import { User } from "../user/user.model";
 import AppError from "../../errors/AppError";
 import QueryBuilder from "../../builder/QueryBuilder";
 import { Faculty } from "./faculty.model";
-import { searchableArray } from "./faculty.constant";
+
 import { TFaculty } from "./faculty.interface";
+import { FacultySearchableFields } from "./faculty.constant";
 
 const getAllFacultyFromDB = async (query: Record<string, unknown>) => {
   const facultyQuery = new QueryBuilder(Faculty.find(), query)
-    .search(searchableArray)
+    .search(FacultySearchableFields)
     .filter()
     .sort()
     .paginate()
     .fields();
 
   const result = await facultyQuery.modelQuery;
-  return result;
+  const meta = await facultyQuery.countTotal();
+  return {
+    result,
+    meta,
+  };
 };
 
 const getSingleFacultyFromDB = async (id: string) => {

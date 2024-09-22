@@ -26,7 +26,8 @@ const getAllFaculty = catchAsync(
       statusCode: httpStatus.OK,
       success: true,
       message: "Faculty are retrieved successfully",
-      data: result,
+      meta: result.meta,
+      data: result.result,
     });
   }
 );

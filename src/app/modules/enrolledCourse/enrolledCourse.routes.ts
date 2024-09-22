@@ -13,6 +13,17 @@ router.post(
   validateRequest(EnrolledCourseValidation.createEnrolledCourseValidation),
   EnrolledCourseController.createEnrolledCourse
 );
+router.get(
+  "/",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+
+  EnrolledCourseController.getEnrolledCourse
+);
+router.get(
+  "/my-enrolled-course",
+  auth(USER_ROLE.student),
+  EnrolledCourseController.getMyEnrolledCourse
+);
 router.patch(
   "/update-enrolled-course",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin, USER_ROLE.faculty),

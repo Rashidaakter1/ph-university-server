@@ -6,7 +6,7 @@ import { User } from "../user/user.model";
 import { TStudent } from "./student.interface";
 import AppError from "../../errors/AppError";
 import QueryBuilder from "../../builder/QueryBuilder";
-import { searchableArray } from "./student.constant";
+import { studentSearchableFields } from "./student.constant";
 
 const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
   // const result = await Student.find()
@@ -31,14 +31,19 @@ const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
       }),
     query
   )
-    .search(searchableArray)
+    .search(studentSearchableFields)
     .filter()
     .sort()
     .paginate()
     .fields();
 
+  const meta = await studentQuery.countTotal();
   const result = await studentQuery.modelQuery;
-  return result;
+
+  return {
+    meta,
+    result,
+  };
 };
 
 const getSingleStudentFromDB = async (id: string) => {
