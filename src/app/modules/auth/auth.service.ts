@@ -19,18 +19,18 @@ const loginUser = async (payload: TLoginUser) => {
   // check user is deleted or not
   const isDeleted = isUserExist.isDeleted;
   if (isDeleted === true) {
-    throw new AppError(httpStatus.FORBIDDEN, "User is deleted");
+    throw new AppError(httpStatus.NOT_FOUND, "User is deleted");
   }
 
   // check user is blocked or not
   const userStatus = isUserExist.status;
   if (userStatus === "blocked") {
-    throw new AppError(httpStatus.FORBIDDEN, "This user is blocked");
+    throw new AppError(httpStatus.NOT_FOUND, "This user is blocked");
   }
 
   const hashedPassword = isUserExist.password;
   if (!(await User.isPasswordMatch(password, hashedPassword))) {
-    throw new AppError(httpStatus.FORBIDDEN, "password mismatch");
+    throw new AppError(httpStatus.NOT_FOUND, "password mismatch");
   }
 
   //create token and sent to the  client
@@ -248,5 +248,3 @@ export const AuthServices = {
   forgetPasswordDb,
   resetPasswordDb,
 };
-
-
