@@ -25,6 +25,13 @@ const createStudentIntoDB = async (
   password: string,
   studentData: TStudent
 ) => {
+  const isEmailExist = await Student.findOne({ email: studentData.email });
+  if (isEmailExist) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "please use a different email address"
+    );
+  }
   // create a user object
   const userData: Partial<TUser> = {};
 
@@ -65,7 +72,8 @@ const createStudentIntoDB = async (
     if (file) {
       const profileLink = file?.path;
       const imageName = `${userData.id}${studentData.name.firstName}`;
-
+      console.log(imageName);
+      console.log(file.path);
       const result = await sendImageToCloudinary(profileLink, imageName);
       studentData.profileImg = result?.uploadResult?.secure_url;
     }
@@ -99,6 +107,14 @@ const createFacultyIntoDB = async (
   password: string,
   facultyData: TFaculty
 ) => {
+  const isEmailExist = await Faculty.findOne({ email: facultyData?.email });
+  if (isEmailExist) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "please use a different email address"
+    );
+  }
+  //
   // create a user object
   const userData: Partial<TUser> = {};
 
@@ -137,7 +153,10 @@ const createFacultyIntoDB = async (
 
       const newFaculty = await Faculty.create([facultyData], { session });
       if (!newFaculty.length) {
-        throw new AppError(httpStatus.BAD_REQUEST, "Failed to create Faculty");
+        throw new AppError(
+          httpStatus.BAD_REQUEST,
+          "Failed to create Faculty fgsdfsd"
+        );
       }
       await session.commitTransaction();
       await session.endSession();
@@ -155,6 +174,13 @@ const createAdminIntoDb = async (
   password: string,
   adminData: TAdmin
 ) => {
+  const isEmailExist = await Admin.findOne({ email: adminData.email });
+  if (isEmailExist) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "please use a different email address"
+    );
+  }
   let userData: Partial<TUser> = {};
   if (password) {
     userData.password = password || config.default__password;

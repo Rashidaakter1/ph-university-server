@@ -16,16 +16,16 @@ export const sendImageToCloudinary = async (
   try {
     // Upload an image to Cloudinary
     const uploadResult = await cloudinary.uploader.upload(path, {
-      public_id: imageName,
+      public_id: imageName.trim(),
     });
-    // console.log("Upload Result:", uploadResult);
+    console.log("Upload Result:", uploadResult);
 
     // Optimize delivery by resizing and applying auto-format and auto-quality
     const optimizeUrl = cloudinary.url(imageName, {
       fetch_format: "auto",
       quality: "auto",
     });
-    // console.log("Optimized URL:", optimizeUrl);
+    console.log("Optimized URL:", optimizeUrl);
 
     // Transform the image: auto-crop to square aspect ratio
     const autoCropUrl = cloudinary.url(imageName, {
