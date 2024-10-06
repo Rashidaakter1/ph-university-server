@@ -50,6 +50,7 @@ const createAdmin = catchAsync(
       password,
       adminData
     );
+    console.log(result);
     sendResponse(res, {
       success: true,
       message: "Admin is created successfully",

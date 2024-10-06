@@ -43,7 +43,7 @@ router.post(
     req.body = JSON.parse(req.body.data);
     next();
   },
-  auth(USER_ROLE.admin),
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(AdminValidations.createAdminValidationSchema),
   UserControllers.createAdmin
 );
@@ -54,6 +54,7 @@ router.post(
   validateRequest(UserValidation.changeStatusValidationSchema),
   UserControllers.changeStatus
 );
+
 router.get(
   "/me",
   auth(

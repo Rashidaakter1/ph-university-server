@@ -174,7 +174,8 @@ const createAdminIntoDb = async (
   password: string,
   adminData: TAdmin
 ) => {
-  const isEmailExist = await Admin.findOne({ email: adminData.email });
+  console.log(file, password, adminData);
+  const isEmailExist = await Admin.findOne({ email: adminData?.email });
   if (isEmailExist) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
@@ -204,11 +205,13 @@ const createAdminIntoDb = async (
     userData.id = await generateAdminId();
     const newUser = await User.create([userData], { session });
 
+    console.log(newUser);
     // create admin
     if (newUser.length) {
       adminData.id = newUser[0].id;
       adminData.user = newUser[0]?._id;
       const newAdmin = await Admin.create([adminData], { session });
+      console.log("newAdmin", newAdmin);
       if (!newAdmin.length) {
         throw new AppError(httpStatus.BAD_REQUEST, "Failed to create admin");
       }
