@@ -21,11 +21,15 @@ router.get(
 
 router.patch(
   "/:id",
-  auth(USER_ROLE.superAdmin),
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(updateAdminValidationSchema),
   AdminControllers.updateAdmin
 );
 
-router.delete("/:id", auth(USER_ROLE.superAdmin), AdminControllers.deleteAdmin);
+router.delete(
+  "/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  AdminControllers.deleteAdmin
+);
 
 export const AdminRoutes = router;
