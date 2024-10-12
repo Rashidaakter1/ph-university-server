@@ -12,7 +12,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://phuni-frontend.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://phuni-frontend.vercel.app",
+      "https://phuni-frontend-5azb15xzt-rashidaakterchadnigmailcoms-projects.vercel.app/auth/signin",
+    ],
     credentials: true,
   })
 );
