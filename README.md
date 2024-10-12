@@ -24,13 +24,13 @@ Node.js, MongoDB, TypeScript, Mongoose
 Clone the project
 
 ```bash
-  git clone https://github.com/Rashidaakter1/Course-review-server.git
+  git clone https://github.com/Rashidaakter1/ph-university-server.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd Course-review-server
+  cd ph-university-server
 ```
 
 Install dependencies
@@ -51,11 +51,16 @@ Start the server with development
 To run this project, you will need to add the following environment variables to your .env file
 
 `PORT=5000`
-
-`NODE__DEV=production`
-
+`NODE_ENV=production`
 `DATABASE__URL=<your-mongodb-connection-string>`
-
+`DEFAULT__PASSWORD=<your-default-password>`
+`BCRYPT__SALTROUND=<number>`
+`JWT__ACCESS__TOKEN=<your-jwt-access-token>`
+`JWT__ACCESS__EXPIRERS__IN=<your-access-expiry-time>`
+`JWT__REFRESH__TOKEN=<your-jwt-refresh-token>`
+`JWT__REFRESH__EXPIRERS__IN=<your-refresh-expiry-time>`
+`RESET__UI__LINK=<your-localhost>`
+`SUPER__ADMIN__PASSWORD=<your-default-password>`
 
 ## Data Models
 ###  Course Model
