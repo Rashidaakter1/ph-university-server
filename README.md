@@ -7,7 +7,8 @@ Develop a Node.js Express application using TypeScript as the programming langua
 
 ## Links
 
-- [university-server](https://phuni-server-r2my8fqpp-rashidaakterchadnigmailcoms-projects.vercel.app/)
+- [university-server](https://phuni-server.vercel.app/)
+- [university-management](https://phuni-frontend.vercel.app/auth/signin)
 
 
 
@@ -62,7 +63,7 @@ To run this project, you will need to add the following environment variables to
 `RESET__UI__LINK=<your-localhost>`
 `SUPER__ADMIN__PASSWORD=<your-default-password>`
 
-## Data Models
+<!-- ## Data Models
 ###  Course Model
 
 The Course model is defined using Mongoose and includes the following fields:
@@ -179,4 +180,4 @@ The application uses custom error handling to provide meaningful error messages.
 
 ## Conclusion
 
-This assignment requires developing a robust backend application using TypeScript, Express.js, and Mongoose for MongoDB. By implementing the Course, Category, and Review models, you'll create a system that efficiently manages course data, categories, and user reviews. The focus on proper data modeling, validation, and CRUD operations ensures that the application is scalable, maintainable, and adheres to best practices for modern web development. This will also provide hands-on experience with key technologies and demonstrate proficiency in building and managing a RESTful API for educational platforms or similar applications.
+This assignment requires developing a robust backend application using TypeScript, Express.js, and Mongoose for MongoDB. By implementing the Course, Category, and Review models, you'll create a system that efficiently manages course data, categories, and user reviews. The focus on proper data modeling, validation, and CRUD operations ensures that the application is scalable, maintainable, and adheres to best practices for modern web development. This will also provide hands-on experience with key technologies and demonstrate proficiency in building and managing a RESTful API for educational platforms or similar applications. -->
