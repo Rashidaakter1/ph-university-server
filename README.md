@@ -78,129 +78,75 @@ To run this project, you will need to add the following environment variables to
 
 ## API Reference
 
-### Users's API Endpoints
+Here is a simple table that summarizes the provided API endpoints:
 
-#### Create a new student.
+Here is the updated table that includes the endpoints for academic semesters, courses, and offered courses:
 
-```http
-  POST /api/v1/users/create-student
-```
-#### Create a new faculty.
-
-```http
-  POST /api/v1/users/create-faculty
-```
-#### Create a new admin.
-
-```http
-  POST /api/v1/users/create-admin
-```
-
-### Students API Endpoints
-
-#### Retrieve all student 
-
-```http
-  GET /api/v1/students
-```
-#### Retrieve a student 
-
-```http
-  GET /api/v1/students/:id
-```
-#### Update a student 
-
-```http
-  GET /api/v1/students/:id
-```
-#### Delete a student 
-
-```http
-  GET /api/v1/students/:id
-```
-### Students API Endpoints
-
-#### Retrieve all student 
-
-```http
-  GET /api/v1/students
-```
-#### Retrieve a student 
-
-```http
-  GET /api/v1/students/:id
-```
-#### Update a student 
-
-```http
-  PATCH /api/v1/students/:id
-```
-#### Delete a student 
-
-```http
-  DELETE /api/v1/students/:id
-```
-### Faculty API Endpoints
-
-#### Retrieve all faculty 
-
-```http
-  GET /api/v1/faculty
-```
-#### Retrieve a faculty 
-
-```http
-  GET /api/v1/faculty/:id
-```
-#### Update a faculty 
-
-```http
-  PATCH /api/v1/faculty/:id
-```
-#### Delete a faculty 
-
-```http
-  DELETE /api/v1/faulty/:id
-```
-### Admin API Endpoints
-
-#### Retrieve all admin 
-
-```http
-  GET /api/v1/admin
-```
-#### Retrieve a admin 
-
-```http
-  GET /api/v1/admin/:id
-```
-#### Update a admin 
-
-```http
-  PATCH /api/v1/admin/:id
-```
-#### Delete a admin 
-
-```http
-  DELETE /api/v1/admin/:id
-```
-
-### Review's API Endpoints
-
-#### Add a new review 
-
-```http
-  POST /api/reviews
-```
-
-#### Retrieve all review 
-
-```http
-  GET /api/reviews
-```
+| **API Type**       | **Action**                      | **Method** | **Endpoint**                         |
+|--------------------|---------------------------------|------------|--------------------------------------|
+| **Users**          | Create a new student            | POST       | `/api/v1/users/create-student`       |
+|                    | Create a new faculty            | POST       | `/api/v1/users/create-faculty`       |
+|                    | Create a new admin              | POST       | `/api/v1/users/create-admin`         |
+| **Students**       | Retrieve all students           | GET        | `/api/v1/students`                   |
+|                    | Retrieve a student              | GET        | `/api/v1/students/:id`               |
+|                    | Update a student                | PATCH      | `/api/v1/students/:id`               |
+|                    | Delete a student                | DELETE     | `/api/v1/students/:id`               |
+| **Faculty**        | Retrieve all faculty            | GET        | `/api/v1/faculty`                    |
+|                    | Retrieve a faculty              | GET        | `/api/v1/faculty/:id`                |
+|                    | Update a faculty                | PATCH      | `/api/v1/faculty/:id`                |
+|                    | Delete a faculty                | DELETE     | `/api/v1/faculty/:id`                |
+| **Admin**          | Retrieve all admins             | GET        | `/api/v1/admin`                      |
+|                    | Retrieve an admin               | GET        | `/api/v1/admin/:id`                  |
+|                    | Update an admin                 | PATCH      | `/api/v1/admin/:id`                  |
+|                    | Delete an admin                 | DELETE     | `/api/v1/admin/:id`                  |
+| **Academic Semester** | Retrieve all semesters         | GET        | `/api/v1/academic-semester`          |
+|                    | Retrieve a semester             | GET        | `/api/v1/academic-semester/:id`      |
+|                    | Create a new semester           | POST       | `/api/v1/academic-semester/create-academic-semester`          |
+|                    | Update a semester               | PATCH      | `/api/v1/academic-semester/:id`      |
+|                    | Delete a semester               | DELETE     | `/api/v1/academic-semester/:id`      |
+| **Semester Registration** | Retrieve all semesters  registration       | GET        | `/api/v1/semester-registrations`          |
+|                    | Retrieve a semester   registration          | GET        | `/api/v1/semester-registrations/:id`      |
+|                    | Create a new semester registration          | POST       | `/api/v1/semester-registrations/create-semester-registration`          |
+|                    | Update a semester registration              | PATCH      | `/api/v1/semester-registrations/:id`      |
+|                    | Delete a semester  registration             | DELETE     | `/api/v1/semester-registrations/:id`      |
+| **Academic Faculty** | Retrieve all academic Faculty         | GET        | `/api/v1/academic-faculty`          |
+|                    | Retrieve a academic Faculty             | GET        | `/api/v1/academic-faculty/:id`      |
+|                    | Create a new academic Faculty           | POST       | `/api/v1/academic-faculty/create-academic-faculty`          |
+|                    | Update a academic Faculty               | PATCH      | `/api/v1/academic-faculty/:id`      |
+|                    | Delete a academic Faculty               | DELETE     | `/api/v1/academic-faculty/:id`      |
+| **Academic Dept** | Retrieve all academic Dept         | GET        | `/api/v1/academic-dept`          |
+|                    | Retrieve a academic Dept             | GET        | `/api/v1/academic-dept/:id`      |
+|                    | Create a new academic Dept           | POST       | `/api/v1/academic-dept/create-academic-dept`          |
+|                    | Update a academic Dept               | PATCH      | `/api/v1/academic-dept/:id`      |
+|                    | Delete a academic Dept               | DELETE     | `/api/v1/academic-dept/:id`      |
+| **Course**         | Retrieve all courses            | GET        | `/api/v1/courses`                    |
+|                    | Retrieve a course               | GET        | `/api/v1/courses/:id`                |
+|                    | Create a new course             | POST       | `/api/v1/courses`                    |
+|                    | Update a course                 | PATCH      | `/api/v1/courses/:id`                |
+|                    | Delete a course                 | DELETE     | `/api/v1/courses/:id`                |
+|                    |  Assign faculties                 | PUT     | `/api/v1/courses/:id/assign-faculties`                |
+|                    | Get faculties                 | GET     | `/api/v1/courses/:id/get-faculties`                |
+|                    | Remove faculties                 | DELETE     | `/api/v1/courses/:id/remove-faculties`                |
+| **Offered Course**  | Retrieve all offered courses    | GET        | `/api/v1/offered-courses`            |
+|                    | Retrieve an offered course      | GET        | `/api/v1/offered-courses/:id`        |
+|                    | Create a new offered course     | POST       | `/api/v1/offered-courses/create-offered-course`            |
+|                    | Update an offered course        | PATCH      | `/api/v1/offered-courses/:id`        |
+|                    | Delete an offered course        | DELETE     | `/api/v1/offered-courses/:id`        |
+|                    | Get my offered courses        | DELETE     | `/api/v1/offered-courses/my-offered-courses`        |
+| **Enrolled Course**  | Retrieve all enrolled courses    | GET        | `/api/v1/enrolled-course`            |
+|                    | Retrieve an enrolled course      | GET        | `/api/v1/enrolled-course/my-enrolled-course`        |
+|                    | Create a new enrolled course     | POST       | `/api/v1/enrolled-course/create-enrolled-course`            |
+|                    | Update an enrolled course        | PATCH      | `/api/v1/enrolled-course/update-enrolled-course`        |
+| **Auth**  | Auth login | POST        | `/api/v1/auth/login`            |
+|                    | Change password | POST        | `/api/v1/auth/change-password`        |
+|                    | Refresh token     | POST       | `/api/v1//auth/refresh-token`            |
+|                    | Forget password | POST      | `/api/v1/auth/forget-password`        |
+|                    | Reset password | POST     | `/api/v1/auth/reset-password`        |
 
 
+This table now includes the endpoints for managing academic semesters, courses, and offered courses alongside the previous user, student, faculty, and admin endpoints.
 
+This table organizes the API endpoints into groups (Users, Students, Faculty, Admin) and shows the HTTP methods associated with each endpoint.
 
 
 ## Validation

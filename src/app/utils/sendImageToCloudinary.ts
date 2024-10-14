@@ -1,12 +1,13 @@
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import fs from "fs";
+import config from "../config";
 
 // Configure Cloudinary with credentials
 cloudinary.config({
-  cloud_name: "djutfjpnk",
-  api_key: "996789188713482",
-  api_secret: "9s1deEB1QDmrE8hBJ4dZa-3IaqE",
+  cloud_name: config.cloudinary_cloud_name,
+  api_key: config.cloudinary_api_key,
+  api_secret: config.cloudinary_api_secret,
 });
 
 // Define the async function to upload images to Cloudinary
