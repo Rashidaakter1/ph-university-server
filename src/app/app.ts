@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import notFound from "./middlewares/notFound";
 import router from "./routes";
+
 const app: Application = express();
 
 //parsers
@@ -15,14 +16,18 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://phuni-frontend.vercel.app",
-      "https://phuni-frontend-5azb15xzt-rashidaakterchadnigmailcoms-projects.vercel.app/auth/signin",
+      // "https://phuni-frontend-5azb15xzt-rashidaakterchadnigmailcoms-projects.vercel.app/auth/signin",
     ],
     credentials: true,
   })
 );
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+    data: null,
+  });
 });
 
 app.use("/api/v1", router);

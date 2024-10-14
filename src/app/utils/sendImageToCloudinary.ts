@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
+import fs from "fs";
 
 // Configure Cloudinary with credentials
 cloudinary.config({
@@ -35,6 +36,13 @@ export const sendImageToCloudinary = async (
       height: 500,
     });
     // console.log("Auto-cropped URL:", autoCropUrl);
+    fs.unlink(path, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("File is deleted.");
+      }
+    });
 
     return {
       uploadResult,

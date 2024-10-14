@@ -15,4 +15,7 @@ export default {
   jwt__refresh__expires__in: process.env.JWT__REFRESH__EXPIRERS__IN,
   reset__ui__link: process.env.RESET__UI__LINK,
   super__admin__password: process.env.SUPER__ADMIN__PASSWORD,
+  cloudinary_cloud_name: process.env.CLOUDINARY__CLOUD__NAME,
+  cloudinary_api_key: process.env.CLOUDINARY__API__KEY,
+  cloudinary_api_secret: process.env.CLOUDINARY__API__SECRET,
 };
