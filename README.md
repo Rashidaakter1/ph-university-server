@@ -51,21 +51,30 @@ Start the server with development
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`PORT=5000`
+`PORT=5000` 
+
 `NODE_ENV=production`
+
 `DATABASE__URL=<your-mongodb-connection-string>`
+
 `DEFAULT__PASSWORD=<your-default-password>`
+
 `BCRYPT__SALTROUND=<number>`
+
 `JWT__ACCESS__TOKEN=<your-jwt-access-token>`
+
 `JWT__ACCESS__EXPIRERS__IN=<your-access-expiry-time>`
+
 `JWT__REFRESH__TOKEN=<your-jwt-refresh-token>`
+
 `JWT__REFRESH__EXPIRERS__IN=<your-refresh-expiry-time>`
+
 `RESET__UI__LINK=<your-localhost>`
+
 `SUPER__ADMIN__PASSWORD=<your-default-password>`
 
 ## Data Models
-
-- [Data model](https://ibb.co.com/fM8b2wX)
+ ![erdiagram](https://github.com/user-attachments/assets/f4439a5e-1e1c-4ed9-80a7-0596ae8d7724)
 
 ## API Reference
 
