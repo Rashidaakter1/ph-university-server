@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
 import { SemesterRegistration } from "../semesterReg/semesterReg.model";
-import { TOfferedCourse } from "./offeredCourse.interface";
+import { TOfferedCourse, TSchedule } from "./offeredCourse.interface";
 import { OfferedCourse } from "./offeredCourse.model";
 import { AcademicSemester } from "../academicSemester/academicSemester.model";
 import { AcademicFaculty } from "../academicFaculty/academicFaculty.model";
@@ -194,18 +194,21 @@ const updateOfferedCourseIntoDb = async (
     days: { $in: days },
   }).select("days startTime endTime");
 
-  const newSchedule = {
-    days,
-    startTime,
-    endTime,
-  };
+  if (days && startTime && endTime) {
+    const newSchedule: TSchedule = {
+      days,
+      startTime,
+      endTime,
+    };
 
-  if (hasTimeConflict(assignedSchedules, newSchedule)) {
-    throw new AppError(
-      httpStatus.CONFLICT,
-      `This faculty is not available at that time ! Choose other time or day`
-    );
+    if (hasTimeConflict(assignedSchedules, newSchedule)) {
+      throw new AppError(
+        httpStatus.CONFLICT,
+        `This faculty is not available at that time ! Choose other time or day`
+      );
+    }
   }
+
   const result = await OfferedCourse.findByIdAndUpdate(id, payload, {
     new: true,
     runValidators: true,

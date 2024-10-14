@@ -3,12 +3,28 @@
 
 ## Objective
 
-Develop a Node.js Express application using TypeScript as the programming language, integrating MongoDB with Mongoose for university management. Ensure data integrity through validation using Zod.
+The University Server is a robust Node.js Express application built with TypeScript and MongoDB, designed for managing various university operations. The use of Mongoose for seamless MongoDB integration, coupled with Zod for data validation, ensures the integrity of the system and its data flow. The API is well-structured and provides endpoints for managing users, students, faculty, admins, academic semesters, semester registrations, academic departments, courses, offered courses, enrolled courses, and authentication.
+
+
+
+Key features include:
+
+- User Management: Separate endpoints to handle the creation, updating, and deletion of students, faculty, and admins.
+- Course Management: Full CRUD operations for courses, along with faculty assignments and retrieval of enrolled/offered courses.
+- Academic Management: Handling academic semesters and departments, with endpoints for registering semesters and managing academic faculties.
+- Authentication: Secure login, token refresh, password management, and JWT-based authentication.
+- Data Validation: Zod is used to ensure that all data is validated before it is saved to the database, maintaining high data integrity.
+- Error Handling: Custom error-handling mechanisms ensure that any issues are logged and communicated consistently to the client.
+
+
+To run this project locally, clone the repository, install the necessary dependencies, and configure the environment variables. This project stands as a reliable and scalable solution for managing university data efficiently, maintaining both security and flexibility.
+
 
 ## Links
 
 - [university-server](https://phuni-server.vercel.app/)
 - [university-management](https://phuni-frontend.vercel.app/auth/signin)
+- <a href="./university -server.postman_collection.json" target="_blank">Postman collection</a> 
 
 
 
@@ -16,8 +32,6 @@ Develop a Node.js Express application using TypeScript as the programming langua
 
 **Server:** 
 Node.js, MongoDB, TypeScript, Mongoose
-
-
 
 
 ## Run Locally
@@ -73,14 +87,19 @@ To run this project, you will need to add the following environment variables to
 
 `SUPER__ADMIN__PASSWORD=<your-default-password>`
 
+`CLOUDINARY__CLOUD__NAME=<your-cloud-name>`
+
+`CLOUDINARY__API__KEY=<your-cloudinary-api>`
+
+`CLOUDINARY__API__SECRET=<your-cloudinary-secret>`
+
+
 ## Data Models
  ![erdiagram](https://github.com/user-attachments/assets/f4439a5e-1e1c-4ed9-80a7-0596ae8d7724)
 
 ## API Reference
 
-Here is a simple table that summarizes the provided API endpoints:
-
-Here is the updated table that includes the endpoints for academic semesters, courses, and offered courses:
+Here is the table that includes the api endpoints for all the services:
 
 | **API Type**       | **Action**                      | **Method** | **Endpoint**                         |
 |--------------------|---------------------------------|------------|--------------------------------------|
@@ -144,19 +163,10 @@ Here is the updated table that includes the endpoints for academic semesters, co
 |                    | Reset password | POST     | `/api/v1/auth/reset-password`        |
 
 
-This table now includes the endpoints for managing academic semesters, courses, and offered courses alongside the previous user, student, faculty, and admin endpoints.
 
-This table organizes the API endpoints into groups (Users, Students, Faculty, Admin) and shows the HTTP methods associated with each endpoint.
+This table organizes the API endpoints into groups (Users, Students, Faculty, Admin ,academic semesters, semester registration,academic faculty, academic dept, enrolled course, courses,auth and offered courses) and shows the HTTP methods associated with each endpoint.
 
-
-## Validation
-
-All the creation and updating is validated using either Zod to ensure data integrity.
-
-## Error Handling
-
-The application uses custom error handling to provide meaningful error messages. Errors are logged and sent in a consistent format to the client.
 
 ## Conclusion
 
-This project is developed a robust backend application using TypeScript, Express.js, and Mongoose for MongoDB.. The focus on proper data modeling, validation, and CRUD operations ensures that the application is scalable, maintainable, and adheres to best practices for modern web development. This will also provide hands-on experience with key technologies and demonstrate proficiency in building and managing a RESTful API for educational platforms or similar applications.
+This project is developed a robust backend application using TypeScript, Express.js, and Mongoose for MongoDB. The focus on proper data modeling, validation, and CRUD operations ensures that the application is scalable, maintainable, and adheres to best practices for modern web development. This will also provide hands-on experience with key technologies and demonstrate proficiency in building and managing a RESTful API for educational platforms or similar applications.
