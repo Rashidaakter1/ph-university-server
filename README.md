@@ -22,14 +22,11 @@ To run this project locally, clone the repository, install the necessary depende
 
 ## Links
 
-- [university-server](https://phuni-server.vercel.app/)
-- [university-management](https://phuni-frontend.vercel.app/auth/signin)
-- [POSTMAN COLLECTION](./university-server.postman_collection.json)
+- [University-server](https://phuni-server.vercel.app/)
+- [University-management](https://phuni-frontend.vercel.app/auth/signin)
+- [Postman collection](./university_server.postman_collection.json)
 
 Description: This is a postman collection of all the API endpoints.Download this, and import it in your postman if you needed.
-
-- <a href="./university-server.postman_collection.json" target="_blank">Postman collection</a> 
-
 
 
 ## Tech Stack
