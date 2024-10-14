@@ -25,13 +25,13 @@ Node.js, MongoDB, TypeScript, Mongoose
 Clone the project
 
 ```bash
-  git clone https://github.com/Rashidaakter1/ph-university-server.git
+ https://github.com/Rashidaakter1/university-server.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd ph-university-server
+  cd university-server
 ```
 
 Install dependencies
